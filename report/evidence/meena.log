@@ -1,0 +1,10 @@
+[Meena] bound to pattern 'bangalore.*.food', waiting for requests. CTRL+C to exit.
+[Meena] REJECTED (missing zone): b'{"id": "bb6644ed-8158-43ac-8289-53023b764034", "city": "bangalore", "type": "food", "ts": 1794851884.6379368}'
+[Meena] received on 'bangalore.indiranagar.food': {'id': '07f9725d-b383-4c58-bd5d-614bde7abfb1', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851900.663254}
+[Meena] received on 'bangalore.indiranagar.food': {'id': 'fca0d8a5-9b8c-4b6d-b888-e546f09e899a', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851914.692783}
+[Meena] received on 'bangalore.whitefield.food': {'id': '5a4a51c8-dd3b-43b6-8db8-bbde516d8c61', 'city': 'bangalore', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851922.713147}
+[Meena] received on 'bangalore.koramangala.food': {'id': '688f09a3-053c-42af-b404-ca9e9b3aa034', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'food', 'ts': 1794851926.7189472}
+[Meena] received on 'bangalore.indiranagar.food': {'id': '350428c0-2c04-4381-bf15-987aef05b1fb', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851940.745825}
+[Meena] received on 'bangalore.indiranagar.food': {'id': '639b9cb3-dc03-47a6-9c68-cbc5dc406993', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851948.762974}
+[Meena] received on 'bangalore.whitefield.food': {'id': '93849434-b855-43fb-9ae2-44e6b9d110d9', 'city': 'bangalore', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851958.784988}
+[Meena] received on 'bangalore.koramangala.food': {'id': 'da3ef908-6ada-4391-b025-b19aeda2012f', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'food', 'ts': 1794851960.790457}

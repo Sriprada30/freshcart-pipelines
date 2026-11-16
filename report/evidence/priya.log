@@ -1,0 +1,11 @@
+[Priya] bound to pattern 'bangalore.indiranagar.*', waiting for requests. CTRL+C to exit.
+[Priya] received on 'bangalore.indiranagar.ride': {'id': 'b97f672d-5dba-46fd-9676-d14d292b520a', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851894.653237}
+[Priya] received on 'bangalore.indiranagar.food': {'id': '07f9725d-b383-4c58-bd5d-614bde7abfb1', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851900.663254}
+[Priya] received on 'bangalore.indiranagar.ride': {'id': '1aff670d-aa4e-4b13-af20-7a05a1f1d35a', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851908.682007}
+[Priya] received on 'bangalore.indiranagar.ride': {'id': '70dbe3b9-7363-4886-ba96-5981a36aceb0', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851910.684958}
+[Priya] received on 'bangalore.indiranagar.food': {'id': 'fca0d8a5-9b8c-4b6d-b888-e546f09e899a', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851914.692783}
+[Priya] REJECTED (missing zone): b'{"id": "b474faa4-c61e-40b3-9eac-48959af05161", "city": "bangalore", "type": "ride", "ts": 1794851924.716327}'
+[Priya] received on 'bangalore.indiranagar.ride': {'id': '3e43ce98-ff56-48f5-beb9-cb4174fcee61', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851936.737345}
+[Priya] received on 'bangalore.indiranagar.food': {'id': '350428c0-2c04-4381-bf15-987aef05b1fb', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851940.745825}
+[Priya] received on 'bangalore.indiranagar.ride': {'id': 'a56362bc-42dc-49ec-90d7-355dd6cfe127', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851942.748359}
+[Priya] received on 'bangalore.indiranagar.food': {'id': '639b9cb3-dc03-47a6-9c68-cbc5dc406993', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851948.762974}

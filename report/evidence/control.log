@@ -1,0 +1,22 @@
+[Control] bound to pattern 'bangalore.#', waiting for requests. CTRL+C to exit.
+[Control] REJECTED (missing zone): b'{"id": "bb6644ed-8158-43ac-8289-53023b764034", "city": "bangalore", "type": "food", "ts": 1794851884.6379368}'
+[Control] received on 'bangalore.koramangala.ride': {'id': '88a26621-ee9a-4e65-a804-124363f4b7ce', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851890.647132}
+[Control] received on 'bangalore.indiranagar.ride': {'id': 'b97f672d-5dba-46fd-9676-d14d292b520a', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851894.653237}
+[Control] received on 'bangalore.koramangala.ride': {'id': '3d4a7849-0e3a-4400-b1ab-38520fa9e47e', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851896.658418}
+[Control] received on 'bangalore.indiranagar.food': {'id': '07f9725d-b383-4c58-bd5d-614bde7abfb1', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851900.663254}
+[Control] received on 'bangalore.indiranagar.ride': {'id': '1aff670d-aa4e-4b13-af20-7a05a1f1d35a', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851908.682007}
+[Control] received on 'bangalore.indiranagar.ride': {'id': '70dbe3b9-7363-4886-ba96-5981a36aceb0', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851910.684958}
+[Control] received on 'bangalore.indiranagar.food': {'id': 'fca0d8a5-9b8c-4b6d-b888-e546f09e899a', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851914.692783}
+[Control] received on 'bangalore.whitefield.ride': {'id': '558e12fb-bf07-49fc-b3b5-dc2e46888a50', 'city': 'bangalore', 'zone': 'whitefield', 'type': 'ride', 'ts': 1794851916.696409}
+[Control] received on 'bangalore.koramangala.ride': {'id': 'bf96aadb-509d-40d6-b914-a18f9c2305a4', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851920.707996}
+[Control] received on 'bangalore.whitefield.food': {'id': '5a4a51c8-dd3b-43b6-8db8-bbde516d8c61', 'city': 'bangalore', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851922.713147}
+[Control] REJECTED (missing zone): b'{"id": "b474faa4-c61e-40b3-9eac-48959af05161", "city": "bangalore", "type": "ride", "ts": 1794851924.716327}'
+[Control] received on 'bangalore.koramangala.food': {'id': '688f09a3-053c-42af-b404-ca9e9b3aa034', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'food', 'ts': 1794851926.7189472}
+[Control] received on 'bangalore.whitefield.ride': {'id': '5d4a3523-eca0-4fb5-af06-44f554d15f8d', 'city': 'bangalore', 'zone': 'whitefield', 'type': 'ride', 'ts': 1794851928.720303}
+[Control] received on 'bangalore.koramangala.ride': {'id': '5846eabf-1515-4cde-b473-f31f316dc699', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851930.725686}
+[Control] received on 'bangalore.indiranagar.ride': {'id': '3e43ce98-ff56-48f5-beb9-cb4174fcee61', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851936.737345}
+[Control] received on 'bangalore.indiranagar.food': {'id': '350428c0-2c04-4381-bf15-987aef05b1fb', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851940.745825}
+[Control] received on 'bangalore.indiranagar.ride': {'id': 'a56362bc-42dc-49ec-90d7-355dd6cfe127', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851942.748359}
+[Control] received on 'bangalore.indiranagar.food': {'id': '639b9cb3-dc03-47a6-9c68-cbc5dc406993', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851948.762974}
+[Control] received on 'bangalore.whitefield.food': {'id': '93849434-b855-43fb-9ae2-44e6b9d110d9', 'city': 'bangalore', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851958.784988}
+[Control] received on 'bangalore.koramangala.food': {'id': 'da3ef908-6ada-4391-b025-b19aeda2012f', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'food', 'ts': 1794851960.790457}

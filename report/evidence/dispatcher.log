@@ -1,0 +1,94 @@
+[dispatcher] #1 -> chennai.tnagar.food: {'id': 'a05b8615-cfa2-49f7-a1cb-ea6f3a6bca63', 'city': 'chennai', 'zone': 'tnagar', 'type': 'food', 'ts': 1794851726.3150358}
+[dispatcher] #2 -> bangalore.whitefield.ride: {'id': 'abfcf6f2-824d-4d21-aef3-bb1553a10162', 'city': 'bangalore', 'zone': 'whitefield', 'type': 'ride', 'ts': 1794851728.320291}
+[dispatcher] #3 -> bangalore.indiranagar.food: {'id': '9be97c9b-bcf5-4332-9007-ad83b6a87a5e', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851730.325264}
+[dispatcher] #4 -> chennai.whitefield.food: {'id': '34597b84-f66b-468d-901d-f5a31c3b5864', 'city': 'chennai', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851732.330703}
+[dispatcher] #5 -> bangalore.indiranagar.ride: {'id': '1f736e61-11ad-4a8b-93e2-12bcca72ad5f', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851734.336659}
+[dispatcher] #6 -> bangalore.whitefield.ride: {'id': 'ae5cf437-1b2c-416f-a3f9-84f1aaae57a5', 'city': 'bangalore', 'zone': 'whitefield', 'type': 'ride', 'ts': 1794851736.342491}
+[dispatcher] #7 -> bangalore.whitefield.food: {'id': '5fe83b33-7c51-458c-b0d3-8b30df14b1a9', 'city': 'bangalore', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851738.348175}
+[dispatcher] #8 -> chennai.whitefield.food: {'id': '98f5c9bb-d73f-404a-af4e-b59ac99762a5', 'city': 'chennai', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851740.353524}
+[dispatcher] #9 -> chennai.tnagar.food: {'id': '3a19727a-3ef1-4b31-988b-3433d9931681', 'city': 'chennai', 'zone': 'tnagar', 'type': 'food', 'ts': 1794851742.3546329}
+[dispatcher] #10 -> chennai.whitefield.food: {'id': '89fdb78c-7436-4ae3-b003-14af1e758303', 'city': 'chennai', 'type': 'food', 'ts': 1794851744.3601081}
+[dispatcher] #11 -> bangalore.koramangala.ride: {'id': 'fcf3dcc2-31f7-4557-a523-e61406b04a1b', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851746.362808}
+[dispatcher] #12 -> chennai.whitefield.food: {'id': 'e6f18f22-366a-4c18-9491-fd18d8201c6e', 'city': 'chennai', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851748.3652039}
+[dispatcher] #13 -> bangalore.whitefield.ride: {'id': '4d31aad3-312a-4135-91fc-10c867d90c2c', 'city': 'bangalore', 'zone': 'whitefield', 'type': 'ride', 'ts': 1794851750.370705}
+[dispatcher] #14 -> chennai.whitefield.ride: {'id': '64e7d9b2-34ef-41c1-9017-9610bdc36456', 'city': 'chennai', 'zone': 'whitefield', 'type': 'ride', 'ts': 1794851752.372489}
+[dispatcher] #15 -> chennai.tnagar.food: {'id': '8bdf7e26-1180-44ec-b2e2-69d36ceb8f50', 'city': 'chennai', 'zone': 'tnagar', 'type': 'food', 'ts': 1794851754.376907}
+[dispatcher] #16 -> bangalore.indiranagar.ride: {'id': '0ae5f02e-044f-44ca-8105-5f1b8ee4d4d7', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851756.379385}
+[dispatcher] #17 -> bangalore.whitefield.food: {'id': 'a510229b-f61f-481e-818e-037413164df8', 'city': 'bangalore', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851758.385428}
+[dispatcher] #18 -> chennai.whitefield.ride: {'id': '50fa8b59-3a3e-432c-8a9a-59d518adbdaa', 'city': 'chennai', 'zone': 'whitefield', 'type': 'ride', 'ts': 1794851760.3906822}
+[dispatcher] #19 -> bangalore.koramangala.food: {'id': 'b05381b3-feed-45f8-8498-b511d7c264ae', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'food', 'ts': 1794851762.396249}
+[dispatcher] #20 -> chennai.tnagar.food: {'id': '02dd3a32-c59d-4b38-805a-0c3925747968', 'city': 'chennai', 'type': 'food', 'ts': 1794851764.400042}
+[dispatcher] #21 -> chennai.whitefield.food: {'id': '68ccbf43-0e3c-4ce6-acf8-729a0918fe81', 'city': 'chennai', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851766.402594}
+[dispatcher] #22 -> bangalore.whitefield.ride: {'id': '324ae934-7f48-4f21-b711-ec2fbbec976a', 'city': 'bangalore', 'zone': 'whitefield', 'type': 'ride', 'ts': 1794851768.407867}
+[dispatcher] #23 -> bangalore.koramangala.ride: {'id': 'dace2cd5-6e11-45cb-ba23-ab5d4bbb1be5', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851770.412343}
+[dispatcher] #24 -> chennai.tnagar.food: {'id': '689e95e7-4117-4e96-905e-633a79a9aa7c', 'city': 'chennai', 'zone': 'tnagar', 'type': 'food', 'ts': 1794851772.417842}
+[dispatcher] #25 -> chennai.tnagar.food: {'id': '1d0cffa7-9673-4fd7-91ad-ea424ffb4618', 'city': 'chennai', 'zone': 'tnagar', 'type': 'food', 'ts': 1794851774.423519}
+[dispatcher] #26 -> chennai.tnagar.ride: {'id': 'd5a6e3da-6211-4113-b69a-20f6ed57c1b9', 'city': 'chennai', 'zone': 'tnagar', 'type': 'ride', 'ts': 1794851776.429277}
+[dispatcher] #27 -> bangalore.indiranagar.ride: {'id': '8381f5ea-3f79-474c-8069-d1aad1216045', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851778.435084}
+[dispatcher] #28 -> bangalore.koramangala.ride: {'id': 'b069c3c7-fd09-4aec-a8db-fb3e2eb7620b', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851780.436329}
+[dispatcher] #29 -> chennai.whitefield.ride: {'id': 'c84b24ea-6c59-4d88-be58-bfa22bb8b901', 'city': 'chennai', 'zone': 'whitefield', 'type': 'ride', 'ts': 1794851782.4419909}
+[dispatcher] #30 -> bangalore.whitefield.ride: {'id': 'e6e460ae-dc4f-41a1-8f96-6e7c7c9b96a7', 'city': 'bangalore', 'type': 'ride', 'ts': 1794851784.4436722}
+[dispatcher] #31 -> bangalore.whitefield.food: {'id': '239fa296-1a0b-432b-bbfb-ad9c483bdcae', 'city': 'bangalore', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851786.446731}
+[dispatcher] #32 -> chennai.tnagar.food: {'id': '76f65c56-e9bd-4853-b70a-1bdfae310e46', 'city': 'chennai', 'zone': 'tnagar', 'type': 'food', 'ts': 1794851788.448833}
+[dispatcher] #33 -> bangalore.koramangala.ride: {'id': 'e3d919cd-7e13-4096-92c0-cf4cd981a86e', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851790.451423}
+[dispatcher] #34 -> bangalore.koramangala.ride: {'id': '204754b6-8e15-48b1-8c86-c2248a400ba7', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851792.4571688}
+[dispatcher] #35 -> bangalore.whitefield.food: {'id': 'b93e0160-3639-4c91-8fe5-3a1fbfe8e54f', 'city': 'bangalore', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851794.462354}
+[dispatcher] #36 -> bangalore.whitefield.ride: {'id': '30ef62a3-9e0a-4d21-96d7-59929d803886', 'city': 'bangalore', 'zone': 'whitefield', 'type': 'ride', 'ts': 1794851796.4681711}
+[dispatcher] #37 -> chennai.whitefield.ride: {'id': 'f3435c81-0d76-4b1a-9379-4ef8973f991f', 'city': 'chennai', 'zone': 'whitefield', 'type': 'ride', 'ts': 1794851798.47391}
+[dispatcher] #38 -> bangalore.indiranagar.food: {'id': '3a88a453-964a-4de1-ad52-ec2f585539e3', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851800.4789782}
+[dispatcher] #39 -> chennai.tnagar.food: {'id': '07c1175f-1f4a-4d87-9d6c-ca50f229764a', 'city': 'chennai', 'zone': 'tnagar', 'type': 'food', 'ts': 1794851802.480212}
+[dispatcher] #40 -> chennai.whitefield.food: {'id': 'efa419c9-e275-4a00-9a41-743213c60b9c', 'city': 'chennai', 'type': 'food', 'ts': 1794851804.48229}
+[dispatcher] #41 -> chennai.tnagar.food: {'id': 'c0b6293c-314d-4b1d-84d2-0780fc927c68', 'city': 'chennai', 'zone': 'tnagar', 'type': 'food', 'ts': 1794851806.488106}
+[dispatcher] #42 -> chennai.tnagar.ride: {'id': '5ff6e978-927b-451e-94fb-a5c84689c3fc', 'city': 'chennai', 'zone': 'tnagar', 'type': 'ride', 'ts': 1794851808.493259}
+[dispatcher] #43 -> bangalore.koramangala.food: {'id': 'e20e6068-72a1-4ee6-a207-aee1837521fd', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'food', 'ts': 1794851810.495153}
+[dispatcher] #44 -> chennai.tnagar.ride: {'id': 'ef40e5b5-6fcd-4f65-8317-cc0958100a1b', 'city': 'chennai', 'zone': 'tnagar', 'type': 'ride', 'ts': 1794851812.496798}
+[dispatcher] #45 -> chennai.whitefield.food: {'id': '27a26384-6e35-470d-b202-8a78f856100f', 'city': 'chennai', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851814.502581}
+[dispatcher] #46 -> bangalore.indiranagar.ride: {'id': 'b9137e04-ed7a-48a4-a06f-0b6918303258', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851816.508362}
+[dispatcher] #47 -> bangalore.indiranagar.ride: {'id': '677024cc-4f42-4b26-809d-34118a9462df', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851818.5115478}
+[dispatcher] #48 -> bangalore.koramangala.food: {'id': '30c74616-5a1e-4086-8e2d-fb714e7ccc99', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'food', 'ts': 1794851820.5145369}
+[dispatcher] #49 -> bangalore.koramangala.food: {'id': 'd7738375-c360-42d8-989d-992778ebbb92', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'food', 'ts': 1794851822.520963}
+[dispatcher] #50 -> chennai.whitefield.food: {'id': 'ab1fa7db-b2a4-4611-a566-116c72fffe9c', 'city': 'chennai', 'type': 'food', 'ts': 1794851824.523519}
+[dispatcher] #51 -> chennai.tnagar.food: {'id': 'fd183cf4-dfeb-4ee0-a201-763e996250b0', 'city': 'chennai', 'zone': 'tnagar', 'type': 'food', 'ts': 1794851826.526456}
+[dispatcher] #52 -> bangalore.koramangala.food: {'id': '43333b0c-3e17-43a5-9b00-00d3eb8973c6', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'food', 'ts': 1794851828.532255}
+[dispatcher] #53 -> chennai.whitefield.food: {'id': '4a78cc13-acfd-4a98-9c52-98b87ada417a', 'city': 'chennai', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851830.537954}
+[dispatcher] #54 -> chennai.tnagar.ride: {'id': '94481f5b-843b-46ce-b1ce-c4c0b3999128', 'city': 'chennai', 'zone': 'tnagar', 'type': 'ride', 'ts': 1794851832.542428}
+[dispatcher] #55 -> chennai.whitefield.food: {'id': 'f1f889ea-dc44-42ea-a60f-5eacf3c827e2', 'city': 'chennai', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851834.5482671}
+[dispatcher] #56 -> bangalore.whitefield.food: {'id': '61b8a0a4-b4c7-4867-990f-47203b97530a', 'city': 'bangalore', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851836.550532}
+[dispatcher] #57 -> chennai.tnagar.food: {'id': '9fb81b5b-53f9-4aa9-89c7-a2b077175384', 'city': 'chennai', 'zone': 'tnagar', 'type': 'food', 'ts': 1794851838.5562859}
+[dispatcher] #58 -> chennai.tnagar.food: {'id': 'e540523a-57d1-4a3d-a0bd-5f3d8090ec07', 'city': 'chennai', 'zone': 'tnagar', 'type': 'food', 'ts': 1794851840.560829}
+[dispatcher] #59 -> chennai.whitefield.food: {'id': 'bd578fd0-6a5c-4888-98ab-affd7d93b1e2', 'city': 'chennai', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851842.563005}
+[dispatcher] #60 -> bangalore.whitefield.food: {'id': '2efeeee4-43a0-48f6-8b4a-07e4d2ee4078', 'city': 'bangalore', 'type': 'food', 'ts': 1794851844.56583}
+[dispatcher] #61 -> bangalore.koramangala.ride: {'id': '517afcb2-edb4-4b0a-8d69-761d0fb6dd53', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851846.56944}
+[dispatcher] #62 -> bangalore.whitefield.food: {'id': '89585804-1d33-4734-8d5b-544563f0ae44', 'city': 'bangalore', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851848.572171}
+[dispatcher] #63 -> bangalore.koramangala.ride: {'id': 'aefcbcf8-f93d-4813-ba72-c11e08fa2b10', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851850.574429}
+[dispatcher] #64 -> chennai.tnagar.ride: {'id': '7e94fcee-ef3c-43dc-98a2-0548908f50c6', 'city': 'chennai', 'zone': 'tnagar', 'type': 'ride', 'ts': 1794851852.575995}
+[dispatcher] #65 -> bangalore.indiranagar.food: {'id': '2c895d79-c272-4416-9c49-18b05163490b', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851854.579378}
+[dispatcher] #66 -> chennai.tnagar.ride: {'id': 'cba3954c-32e4-4ae0-9b03-46661082f711', 'city': 'chennai', 'zone': 'tnagar', 'type': 'ride', 'ts': 1794851856.581125}
+[dispatcher] #67 -> chennai.tnagar.ride: {'id': 'bfbe20f6-4d64-46cd-989a-ef2886e5ecdf', 'city': 'chennai', 'zone': 'tnagar', 'type': 'ride', 'ts': 1794851858.582998}
+[dispatcher] #68 -> bangalore.indiranagar.food: {'id': 'a91569f2-2cf2-4924-b243-cf372c571ecd', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851860.584254}
+[dispatcher] #69 -> chennai.tnagar.food: {'id': 'e2888418-c300-4bdd-bf92-8bc702dd83d6', 'city': 'chennai', 'zone': 'tnagar', 'type': 'food', 'ts': 1794851862.5900621}
+[dispatcher] #70 -> bangalore.koramangala.ride: {'id': 'c8fd6625-c020-4495-a67b-ddaf455ac945', 'city': 'bangalore', 'type': 'ride', 'ts': 1794851864.59273}
+[dispatcher] #71 -> bangalore.koramangala.ride: {'id': 'f27ce77a-4896-48ec-bb13-8a23a79a9271', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851866.5985541}
+[dispatcher] #72 -> bangalore.koramangala.food: {'id': '1b6ec9c7-c05b-4fe2-9393-d927f2b6454c', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'food', 'ts': 1794851868.604201}
+[dispatcher] #73 -> chennai.tnagar.ride: {'id': 'e2004461-e652-4e8c-8cb1-11651853e2f7', 'city': 'chennai', 'zone': 'tnagar', 'type': 'ride', 'ts': 1794851870.60875}
+[dispatcher] #74 -> bangalore.indiranagar.food: {'id': '92a1d9a7-272a-4f14-be0d-6acb736fe6e4', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851872.609565}
+[dispatcher] #75 -> bangalore.indiranagar.food: {'id': 'db8fad30-0ede-4742-aefe-af63770ac70d', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851874.615225}
+[dispatcher] #76 -> chennai.whitefield.food: {'id': 'c6947b1e-a3f9-4ab9-b33a-e3bbcfb67a7a', 'city': 'chennai', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851876.620671}
+[dispatcher] #77 -> bangalore.koramangala.ride: {'id': '3c3d4696-85c2-480d-a020-09fbed0db4c9', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851878.626782}
+[dispatcher] #78 -> bangalore.koramangala.food: {'id': 'bb36d169-ef9e-422d-95ae-9a630ef7a504', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'food', 'ts': 1794851880.629067}
+[dispatcher] #79 -> chennai.whitefield.food: {'id': '5e7579c1-be8a-4dfc-b4c8-5a57cc0dedea', 'city': 'chennai', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851882.632524}
+[dispatcher] #80 -> bangalore.whitefield.food: {'id': 'bb6644ed-8158-43ac-8289-53023b764034', 'city': 'bangalore', 'type': 'food', 'ts': 1794851884.6379368}
+[dispatcher] #81 -> chennai.tnagar.ride: {'id': 'a5659d0a-88ed-4bdb-a26c-e95fcedad8c9', 'city': 'chennai', 'zone': 'tnagar', 'type': 'ride', 'ts': 1794851886.6404119}
+[dispatcher] #82 -> chennai.tnagar.food: {'id': 'ddc77ab7-0a67-474d-b6f3-4a59591dbaa0', 'city': 'chennai', 'zone': 'tnagar', 'type': 'food', 'ts': 1794851888.645747}
+[dispatcher] #83 -> bangalore.koramangala.ride: {'id': '88a26621-ee9a-4e65-a804-124363f4b7ce', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851890.647132}
+[dispatcher] #84 -> chennai.tnagar.ride: {'id': '48aa7160-7619-4172-8bd7-bd2bece27b9d', 'city': 'chennai', 'zone': 'tnagar', 'type': 'ride', 'ts': 1794851892.651596}
+[dispatcher] #85 -> bangalore.indiranagar.ride: {'id': 'b97f672d-5dba-46fd-9676-d14d292b520a', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851894.653237}
+[dispatcher] #86 -> bangalore.koramangala.ride: {'id': '3d4a7849-0e3a-4400-b1ab-38520fa9e47e', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851896.658418}
+[dispatcher] #87 -> chennai.whitefield.food: {'id': 'da1a9ce1-85cb-443a-a700-122ce391ba15', 'city': 'chennai', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851898.662432}
+[dispatcher] #88 -> bangalore.indiranagar.food: {'id': '07f9725d-b383-4c58-bd5d-614bde7abfb1', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'food', 'ts': 1794851900.663254}
+[dispatcher] #89 -> chennai.tnagar.food: {'id': '1f8abb49-b9d6-4ab0-8751-62b4a20b8d16', 'city': 'chennai', 'zone': 'tnagar', 'type': 'food', 'ts': 1794851902.668685}
+[dispatcher] #90 -> chennai.whitefield.ride: {'id': 'b1af24b5-df08-4d17-917a-1f4da4aabcff', 'city': 'chennai', 'type': 'ride', 'ts': 1794851904.6701598}
+[dispatcher] #91 -> chennai.whitefield.food: {'id': '0dc5eb26-0b59-4801-866c-deae4138090f', 'city': 'chennai', 'zone': 'whitefield', 'type': 'food', 'ts': 1794851906.6758668}
+[dispatcher] #92 -> bangalore.indiranagar.ride: {'id': '1aff670d-aa4e-4b13-af20-7a05a1f1d35a', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851908.682007}
+[dispatcher] #93 -> bangalore.indiranagar.ride: {'id': '70dbe3b9-7363-4886-ba96-5981a36aceb0', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', 'ts': 1794851910.684958}
+[dispatcher] #94 -> chennai.whitefield.ride: {'id': 'e67e3739-9ea2-4b60-a6bb-9c7259636e7f', 'city': 'chennai', 'zone': 'whitefield', 'type': 'ride', 'ts': 1794851912.690777}

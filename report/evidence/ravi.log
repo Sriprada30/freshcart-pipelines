@@ -1,0 +1,7 @@
+[Ravi] bound to pattern 'bangalore.koramangala.*', waiting for requests. CTRL+C to exit.
+[Ravi] received on 'bangalore.koramangala.ride': {'id': '88a26621-ee9a-4e65-a804-124363f4b7ce', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851890.647132}
+[Ravi] received on 'bangalore.koramangala.ride': {'id': '3d4a7849-0e3a-4400-b1ab-38520fa9e47e', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851896.658418}
+[Ravi] received on 'bangalore.koramangala.ride': {'id': 'bf96aadb-509d-40d6-b914-a18f9c2305a4', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851920.707996}
+[Ravi] received on 'bangalore.koramangala.food': {'id': '688f09a3-053c-42af-b404-ca9e9b3aa034', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'food', 'ts': 1794851926.7189472}
+[Ravi] received on 'bangalore.koramangala.ride': {'id': '5846eabf-1515-4cde-b473-f31f316dc699', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'ride', 'ts': 1794851930.725686}
+[Ravi] received on 'bangalore.koramangala.food': {'id': 'da3ef908-6ada-4391-b025-b19aeda2012f', 'city': 'bangalore', 'zone': 'koramangala', 'type': 'food', 'ts': 1794851960.790457}
