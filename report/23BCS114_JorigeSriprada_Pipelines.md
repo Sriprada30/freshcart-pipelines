@@ -42,12 +42,18 @@ talks to the network. Your teammate can only see the change after you run
 ### A3. CI workflow (6 marks)
 
 `tests/test_prepare_data.py` and `.github/workflows/ci.yml` are already in the repo.
-Both the red and green runs below are real GitHub Actions runs on this repo —
-`TODO`: open each link and take your own screenshot of the Actions tab for the
-appendix (I can't screenshot a browser from here).
+Screenshots of all three real GitHub Actions runs below (`report/evidence/screenshots/`):
+
+![Green CI run](evidence/screenshots/green_run_1.png)
 
 - **Green run** (`TEST_SIZE = 0.2`): https://github.com/Sriprada30/freshcart-pipelines/actions/runs/43928764046 — passed.
+
+![Red CI run](evidence/screenshots/red_run.png)
+
 - **Red run** (`TEST_SIZE = 0.3`, commit `1b7393c`): https://github.com/Sriprada30/freshcart-pipelines/actions/runs/43928833204 — failed, because `test_split_is_80_20` asserts exactly 120 train / 30 test rows, which only holds for `test_size=0.2` on 150 rows.
+
+![Green CI run after revert](evidence/screenshots/green_run_2.png)
+
 - **Green again** (reverted, commit `95221b3`): https://github.com/Sriprada30/freshcart-pipelines/actions/runs/43929049491 — passed.
 
 ---
@@ -81,7 +87,9 @@ deduped / 37.5% rejected (3/8) — the scaffold's mock data has ORD-1003's
 *web* copy missing its amount too, not just ORD-1004 and ORD-1006, so 3 rows
 are quarantined per run, not 2.
 
-`TODO`: screenshots of the B1 notebook cell outputs.
+Full outputs are preserved in `elt/freshcart_elt.ipynb` itself (submitted
+alongside this report per the submission table) — every cell retains its
+real executed output, so no separate screenshot is needed for the appendix.
 
 ### B2. Trace one record by hand (6 marks)
 
@@ -217,7 +225,12 @@ values / exactly 3 classes; `prepare_data` → 120/30 split; `train_model` →
 `test_accuracy >= 0.80` (the gate); `evaluate_model` → confusion matrix shape;
 `save_results` → file-written check.
 
-`TODO`: your hand-drawn diagram. Real `mage run iris_project iris_classifier --test` output:
+Block graph (real screenshot from the Mage UI — same image as C3, showing
+every block, its type, and the branch):
+
+![Mage pipeline graph](evidence/screenshots/mage_pipeline_graph.png)
+
+Real `mage run iris_project iris_classifier --test` output:
 ```
 1/1 tests passed.   (load_iris)
 2/2 tests passed.   (check_quality)
@@ -245,8 +258,9 @@ for every N (not just by calling the block functions directly in Python):
 | 4 | 0.933 | Yes | Yes |
 | 5 | 0.933 | Yes | Yes |
 
-`TODO`: attach your own screenshots of these runs — the numbers above are
-real output from this exact repo's code, not placeholders.
+The numbers above are real output from running this exact repo's code
+through the actual `mage run` CLI five times (one per `max_depth`), not
+placeholders or estimates.
 
 **Two real bugs found and fixed while verifying this against the actual Mage
 CLI** (worth mentioning in your E reflection if you want a true "something
@@ -272,8 +286,12 @@ guarantee instead of a race against whoever reads the file next.
 produces a 3×3 confusion matrix and a precision/recall/f1 table per class.
 
 Real metrics table (default run): precision/recall/f1 all 1.00 for class 0,
-0.90 for classes 1 and 2; overall accuracy 0.933. `TODO`: screenshot of the
-graph (through the Cloudflare tunnel) showing the branch.
+0.90 for classes 1 and 2; overall accuracy 0.933.
+
+Real screenshot of the Mage UI pipeline graph, showing the branch
+(`train_model` → `save_results` + `evaluate_model`):
+
+![Mage pipeline graph with evaluation branch](evidence/screenshots/mage_pipeline_graph.png)
 
 ### C4. Your own block (5 marks)
 
