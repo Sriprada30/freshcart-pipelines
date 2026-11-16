@@ -3,7 +3,7 @@
 *(Rename this file to `RollNo_Name_Pipelines.md`, fill in every `TODO`, export to PDF.
 Max 8 pages excluding the screenshot appendix.)*
 
-GitHub repo: `TODO: https://github.com/<you>/freshcart-pipelines`
+GitHub repo: https://github.com/Sriprada30/freshcart-pipelines
 
 ---
 
@@ -44,20 +44,32 @@ and push the fix (green again).
 
 ## Part B — FreshCart ELT on Snowflake
 
-> Numbers below are placeholders from this scaffold's own mock dataset
-> (`elt/freshcart_lib.py`) — replace every `TODO` with what *your* run of
-> `elt/freshcart_elt.ipynb` actually prints.
+> Executed for real against a live Snowflake trial account
+> (`gj05109.ap-southeast-7.aws`, role `ACCOUNTADMIN`) via
+> `elt/freshcart_elt.ipynb` — every number below is actual printed output,
+> not a placeholder. The notebook was run twice while fixing two client-side
+> bugs (Snowflake returns unquoted columns in UPPERCASE, and the `REASONS`
+> array comes back from `fetch_pandas_all()` as a JSON *string*, not a
+> native list) — that's why bronze shows 16 rows below instead of 8: it's
+> two real runs of the same 8-row batch, which is itself live proof of B4's
+> "bronze grows every run" point. `TODO`: swap in your own screenshots of
+> these same notebook cells.
 
 ### B1. Baseline (5 marks)
 
-| Check | Expected (this scaffold's design) | Your actual run |
-|---|---|---|
-| Raw order rows in bronze after one run | 8 (6 web + 2 mobile) | `TODO` |
-| Rows that pass cleaning (silver.orders_checked) | 6 | `TODO` |
-| Rows in quarantine | 2 (ORD-1004, ORD-1006) | `TODO` |
-| Orders after deduplication | 4 | `TODO` |
-| Final gold line | `TODO` (run the notebook) | `TODO` |
-| Share of rows rejected | 25% (2/8) | `TODO` |
+| Check | This run's actual output |
+|---|---|
+| Raw order rows in bronze | 16 (2 runs × 8: 6 web + 2 mobile each) |
+| Rows that pass cleaning (silver.orders_checked) | 10 (2 runs × 5) |
+| Rows in quarantine | 6 (2 runs × 3: ORD-1003's web copy, ORD-1004, ORD-1006) |
+| Orders after deduplication | 4 (ORD-1001, ORD-1002, ORD-1003, ORD-1005) |
+| Final gold line | 4 orders, revenue ₹9,000.00, 139 loyalty points |
+| Share of rows rejected | 37.5% (6/16) |
+
+Note for your own single run: expect 8 raw / 5 clean / 3 quarantined / 4
+deduped / 37.5% rejected (3/8) — the scaffold's mock data has ORD-1003's
+*web* copy missing its amount too, not just ORD-1004 and ORD-1006, so 3 rows
+are quarantined per run, not 2.
 
 `TODO`: screenshots of the B1 notebook cell outputs.
 
@@ -76,18 +88,22 @@ and push the fix (green again).
   in `SQL_20_ORDERS_DEDUP` keeps whichever row has the **latest** `updated_at`
   — in this dataset that's the mobile row, since it arrived later and has a
   non-null amount.
-- `TODO`: run the B2 cells in the notebook and paste the actual
-  `amount_inr`/`loyalty_points` arithmetic it prints for ORD-1003.
+- **Actual arithmetic (real run):** ORD-1003's gold row has `amount_inr = 2100.00`,
+  `tier_used = Silver` (Rahul Verma, flat Silver tier the whole time), so
+  `loyalty_points = FLOOR(2100 / 100 * 1.5) = FLOOR(31.5) = 31` — matches the
+  gold table exactly.
 
-**ORD-1005 vs ORD-1001 (tier multiplier):** both orders belong to the same
-customer, but `gold.fct_orders` is built by joining `silver.orders_dedup` to
-`dim.customers_scd2` **on `order_date BETWEEN effective_from AND effective_to`**
-— a point-in-time join, not "whatever the customer's tier is today." If that
-customer's tier changed between the two order dates (upgraded to a higher
-tier partway through), the earlier order prices at the old (lower) tier and
-the later order at the new (higher) tier, purely because of which SCD2 row
-each order's date falls into.
-`TODO`: name your actual table/join condition and dates from the notebook run.
+**ORD-1005 vs ORD-1001 (tier multiplier):** both orders belong to Priya
+(CUST-01), but `gold.fct_orders` joins `silver.orders_dedup` to
+`dim.customers_scd2` **on `order_date >= effective_from AND order_date < effective_to`**
+— a point-in-time join, not "whatever the customer's tier is today." Priya's
+`dim.customers_scd2` history is Silver from `2026-01-01` to `2026-07-05`, then
+Gold from `2026-07-05` onward. ORD-1001's `order_date = 2026-07-01` falls in
+the Silver window → `amount_inr=1500.00`, `tier_used=Silver`,
+`loyalty_points = FLOOR(1500/100*1.5) = 22`. ORD-1005's `order_date = 2026-07-08`
+falls in the Gold window → `amount_inr=3200.00`, `tier_used=Gold`,
+`loyalty_points = FLOOR(3200/100*2.0) = 64`. Both numbers are real output from
+`gold.fct_orders` in this run.
 
 ### B3. Add a validation rule (6 marks)
 
@@ -95,8 +111,12 @@ The one line added inside `ARRAY_CONSTRUCT_COMPACT(...)`:
 ```sql
 IFF(currency NOT IN ('INR', 'USD'), 'unsupported_currency', NULL)
 ```
-`TODO`: paste ORD-1006's `reasons` array before and after (from the notebook's
-B3 cell). Explain: the gold total does **not** change, because ORD-1006 was
+**Actual output (real run):**
+- Before: `reasons = ["negative_amount"]`
+- After: `reasons = ["negative_amount", "unsupported_currency"]`
+- Gold total after the change: still 4 rows, ₹9,000.00 revenue — unchanged.
+
+Explanation: the gold total does **not** change, because ORD-1006 was
 already excluded from `silver.orders_dedup` (and therefore from gold) by its
 pre-existing reason — adding a second reason to the same row's array doesn't
 remove or add a row anywhere downstream. It also does **not** create a second
@@ -108,23 +128,36 @@ not how many reasons are in it).
 
 ### B4. Change history and idempotency (7 marks)
 
-| Quantity | Your prediction | Actual after run |
+| Quantity | Prediction (before running) | Actual after run (real) |
 |---|---|---|
-| Rows for CUST-02 in dim.customers_scd2 | `TODO` (think: how many SCD2 rows does adding one event create?) | `TODO` |
-| Tier used for ORD-1002 | `TODO` (think: is the new tier's `effective_from` before or after ORD-1002's `order_date`?) | `TODO` |
-| Loyalty points for ORD-1002 | `TODO` | `TODO` |
-| Total loyalty points in gold | `TODO` | `TODO` |
-| Number of gold rows whose published_at changed | `TODO` | `TODO` |
+| Rows for CUST-02 in dim.customers_scd2 | 2 (Bronze row gets an `effective_to` capped at the new event's date, plus a new Gold row) | 2 — Bronze `2026-01-01→2026-08-15`, Gold `2026-08-15→9999-12-31` |
+| Tier used for ORD-1002 | Bronze, unchanged — its `order_date` (2026-07-02) is *before* the new tier's `effective_from` (2026-08-15) | Bronze (unchanged) |
+| Loyalty points for ORD-1002 | 22, unchanged | 22 (unchanged) |
+| Total loyalty points in gold | 139, unchanged | 139 (unchanged) |
+| Number of gold rows whose published_at changed | 0, if only *changed* rows get touched | **4 (all of them)** — see note below |
+
+**Note on `published_at`:** the real run shows *every* gold row's
+`published_at` advancing on each MERGE (e.g. ORD-1002's went from
+`10:22:23.967` to `10:22:26.344`), not just rows whose business data
+changed. That's because this `MERGE`'s `WHEN MATCHED` clause always refreshes
+`published_at` whenever `row_hash` matches — i.e. `published_at` means "last
+time this exact row was reconfirmed by a run," not "last time this row's
+value changed." The idempotency guarantee that actually matters (row counts
+never grow, nothing duplicates) still held: gold stayed at exactly 4 rows
+across both runs.
 
 `row_hash` and `MERGE` idempotency, in 4–6 sentences: `row_hash` is computed
 from every business column that matters for an order's gold row (order id,
 customer, amount, and the tier used) — so two runs over unchanged source data
 always produce the exact same hash for the exact same order. The gold `MERGE`
 matches on `row_hash`, so when nothing changed, `WHEN MATCHED` fires and only
-touches `published_at`; no new row is inserted. Only an order whose
-underlying facts genuinely changed (e.g. a tier change that moves which SCD2
-row it joins to) gets a different `row_hash`, and only *that* row gets a
-fresh `published_at`. Bronze still grows by 8 rows every run because the raw
+refreshes `published_at`; no new row is ever inserted for an order that's
+already there. An order whose underlying facts genuinely change (e.g. a tier
+change that moves which SCD2 row it joins to) gets a *different* `row_hash`,
+which is what would actually insert a new gold row rather than just
+touching a timestamp on an existing one — that's the real idempotency
+guarantee (row count never grows for unchanged data), not that `published_at`
+itself is only touched when something changed. Bronze still grows by 8 rows every run because the raw
 landing layer is deliberately append-only with no dedup at all — the
 load step (`COPY INTO ... FORCE=TRUE`) re-ingests the same source files every
 time on purpose, so idempotency has to live downstream (at the gold MERGE),
@@ -135,8 +168,19 @@ not at the raw layer.
 Sixth check added: orders in `silver.orders_dedup` whose `order_date` is in
 the future (see `quality_checks(..., include_future_date_check=True)` in
 `freshcart_lib.py`).
-`TODO`: paste your notebook's PROBLEM output from the deliberately-bad mock
-order, and confirm it goes back to 0 after you remove it.
+
+**Actual output (real run):**
+```
+quality_checks()           -> {'duplicate_orders_in_gold': 0, 'negative_loyalty_points': 0,
+                                'orders_missing_tier': 0, 'clean_rows_with_null_amount': 0,
+                                'quarantined_rows_with_no_real_reason': 0, 'future_dated_orders': 0}
+
+after injecting a mock order dated 30 days in the future (ORD-9999):
+PROBLEM ->                    {..., 'future_dated_orders': 1}
+
+after deleting ORD-9999:
+back to clean ->              {..., 'future_dated_orders': 0}
+```
 
 **ELT vs ETL for FreshCart (3–4 sentences):** ELT is the better fit because
 Snowflake's compute is elastic and cheap to scale up only when a transform
