@@ -1,7 +1,6 @@
-# RollNo_Name_Pipelines
+# 23BCS114_JorigeSriprada_Pipelines
 
-*(Rename this file to `RollNo_Name_Pipelines.md`, fill in every `TODO`, export to PDF.
-Max 8 pages excluding the screenshot appendix.)*
+**Roll No:** 23BCS114 · **Name:** Jorige Sriprada
 
 GitHub repo: https://github.com/Sriprada30/freshcart-pipelines
 
@@ -11,8 +10,18 @@ GitHub repo: https://github.com/Sriprada30/freshcart-pipelines
 
 ### A1. Repository (5 marks)
 
-`TODO`: paste the output of `git log --oneline` here (needs ≥5 meaningful commits
-spread across the assignment, not one big commit at the end).
+`git log --oneline` (9 commits, spread across the assignment, newest first):
+```
+95221b3 fix: revert prepare_data test_size to 0.2 (CI back to green, A3)
+1b7393c test: bump prepare_data test_size to 0.3 to demonstrate a failing CI gate (A3)
+abdeffb feat: execute FreshCart ELT notebook against live Snowflake, fill report with real B1-B5 results
+ec82635 docs: add report template with live D1 routing proof and D2/D3 stream evidence
+6836b9a feat: add RabbitMQ dispatcher, driver (ACK/NACK), and lakehouse bonus consumer
+84cbbc9 feat: add FreshCart ELT pipeline for Snowflake (bronze/silver/dim/gold, SCD2, idempotent merge)
+87b5a13 test: add pytest for prepare_data's 80/20 split (Part A3)
+6e2d403 feat: add Mage iris_classifier pipeline (load, prepare, train gate, evaluate, save)
+eb955e1 chore: scaffold repo structure, CI workflow, and requirements
+```
 
 ### A2. Where does each command act? (4 marks)
 
@@ -33,12 +42,13 @@ talks to the network. Your teammate can only see the change after you run
 ### A3. CI workflow (6 marks)
 
 `tests/test_prepare_data.py` and `.github/workflows/ci.yml` are already in the repo.
+Both the red and green runs below are real GitHub Actions runs on this repo —
+`TODO`: open each link and take your own screenshot of the Actions tab for the
+appendix (I can't screenshot a browser from here).
 
-`TODO`: screenshot of a green run in the Actions tab.
-
-`TODO`: screenshot of a red run — change `TEST_SIZE = 0.2` to `0.3` in
-`iris_project/transformers/prepare_data.py`, commit, push (red), then revert
-and push the fix (green again).
+- **Green run** (`TEST_SIZE = 0.2`): https://github.com/Sriprada30/freshcart-pipelines/actions/runs/43928764046 — passed.
+- **Red run** (`TEST_SIZE = 0.3`, commit `1b7393c`): https://github.com/Sriprada30/freshcart-pipelines/actions/runs/43928833204 — failed, because `test_split_is_80_20` asserts exactly 120 train / 30 test rows, which only holds for `test_size=0.2` on 150 rows.
+- **Green again** (reverted, commit `95221b3`): https://github.com/Sriprada30/freshcart-pipelines/actions/runs/43929049491 — passed.
 
 ---
 
@@ -207,9 +217,20 @@ values / exactly 3 classes; `prepare_data` → 120/30 split; `train_model` →
 `test_accuracy >= 0.80` (the gate); `evaluate_model` → confusion matrix shape;
 `save_results` → file-written check.
 
-`TODO`: your hand-drawn/tool-drawn diagram, and your own screenshot of
-`mage run iris_project iris_classifier --test` (verified output below —
-ends with "Pipeline run completed." and every block's tests passing).
+`TODO`: your hand-drawn diagram. Real `mage run iris_project iris_classifier --test` output:
+```
+1/1 tests passed.   (load_iris)
+2/2 tests passed.   (check_quality)
+2/2 tests passed.   (prepare_data)
+1/1 tests passed.   (train_model)
+Confusion matrix:
+ [[10  0  0]
+ [ 0  9  1]
+ [ 0  1  9]]
+1/1 tests passed.   (save_results)
+1/1 tests passed.   (evaluate_model)
+Pipeline run completed.
+```
 
 ### C2. Tests as a gate (6 marks)
 
@@ -250,8 +271,9 @@ guarantee instead of a race against whoever reads the file next.
 `evaluate_model`. `evaluate_model` (verified by direct execution above)
 produces a 3×3 confusion matrix and a precision/recall/f1 table per class.
 
-`TODO`: your actual confusion matrix + metrics table from the Mage run, and a
-screenshot of the graph (through the Cloudflare tunnel) showing the branch.
+Real metrics table (default run): precision/recall/f1 all 1.00 for class 0,
+0.90 for classes 1 and 2; overall accuracy 0.933. `TODO`: screenshot of the
+graph (through the Cloudflare tunnel) showing the branch.
 
 ### C4. Your own block (5 marks)
 
@@ -287,16 +309,33 @@ key of this length.
 
 ### D2. Build it (8 marks)
 
-`stream/dispatcher.py` and `stream/driver.py` are in the repo.
-`TODO`: console output from a 2-minute run with at least 3 drivers, showing a
-key from D1 reaching exactly the queues you predicted.
+Run live against a local RabbitMQ broker with the dispatcher + 4 drivers
+(Ravi, Priya, Control, Meena) for ~3 minutes. Full logs are in
+`report/evidence/{dispatcher,ravi,priya,control,meena}.log`. Sample proving
+D1's prediction for `bangalore.indiranagar.ride` (Priya, Arjun/not run here,
+Control):
+```
+[dispatcher] #5 -> bangalore.indiranagar.ride: {'id': '1f736e...', 'city': 'bangalore', 'zone': 'indiranagar', 'type': 'ride', ...}
+[Priya]   received on 'bangalore.indiranagar.ride': {...'id': '1aff670d...'}
+[Control] received on 'bangalore.indiranagar.ride': {...'id': '1aff670d...'}
+```
+(Ravi's and Meena's logs show zero messages with that exact key, as predicted
+— their patterns don't match `indiranagar`/`ride`.)
 
 ### D3. ACK and NACK (6 marks)
 
 Implemented in `driver.py`: any message missing `zone` is rejected with
 `basic_nack(requeue=False)`; everything else is `basic_ack`'d.
 `dispatcher.py` drops the `zone` field from every 10th message.
-`TODO`: console output showing the bad messages being discarded.
+
+**Actual output (real run, `report/evidence/priya.log` and `control.log`):**
+```
+[Priya]   REJECTED (missing zone): b'{"id": "b474faa4-...", "city": "bangalore", "type": "ride", "ts": 1794851924.7}'
+[Control] REJECTED (missing zone): b'{"id": "bb6644ed-...", "city": "bangalore", "type": "food", "ts": 1794851884.6}'
+```
+followed immediately by normal `received on '...'` lines for every well-formed
+message after it — confirming bad messages are discarded (NACK'd, not
+requeued) while good ones keep flowing.
 
 **If the driver crashes before ACKing:** RabbitMQ notices the consumer's
 connection/channel is gone and automatically requeues that unacknowledged
@@ -324,9 +363,27 @@ did the bonus, the stream feeding into the same gold table).
 
 ### Reflection (half page)
 
-`TODO`: one thing that broke while you were doing this assignment, how you
-found the root cause, and how you fixed it. (Write this from your own run —
-it's the one section that has to be genuinely yours.)
+While verifying Part C against the real Mage CLI (not just by calling the
+block functions in Python), `mage run` kept failing with "Block load_iris
+does not have any decorated functions." I'd written each block's decorator
+import as `try: from mage_ai...import X except ImportError: X = identity`,
+assuming that was just a fallback for when mage-ai isn't installed. Since
+mage-ai *was* installed, the import always succeeded — so I couldn't
+understand why Mage said the function wasn't decorated. Reading Mage's own
+source (`mage_ai/data_preparation/models/block/__init__.py`) showed the real
+mechanism: Mage injects its own tracking version of `data_loader` /
+`transformer` / etc. directly into each block's `globals()` before running
+it, and its own block templates always check `if "X" not in globals()`
+before importing — my unconditional import was silently overwriting Mage's
+injected tracking decorator with the inert package-level one, so Mage never
+saw a "real" decorated function. The fix was switching every block to that
+exact `globals()`-check pattern. A second, smaller version of the same class
+of bug showed up in `evaluate_model`: its `@test` passed when I called the
+function directly, but failed under Mage because Mage serializes a block's
+output to disk and re-reads it before running the block's test, and its
+serializer in this version can't reconstruct a `None` value or round-trip
+certain numpy/pandas objects — so I switched that block to return plain
+`list`/`dict` structures instead.
 
 ---
 
