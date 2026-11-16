@@ -375,9 +375,20 @@ than requeued.
 
 ### Diagram
 
-`TODO`: one diagram — code in Git → CI testing it → ELT pipeline producing
-gold data → ML pipeline training on data → stream feeding events (and, if you
-did the bonus, the stream feeding into the same gold table).
+![Integration diagram: Git/CI, ELT, ML pipeline, stream, and the bonus lakehouse consumer](evidence/screenshots/integration_diagram.png)
+
+Git/GitHub holds the code; CI (GitHub Actions) proves the Mage pipeline's
+`prepare_data` block still behaves correctly on every push. The ELT pipeline
+turns raw FreshCart orders into a trusted `gold.fct_orders` table via an
+idempotent `row_hash` MERGE. The ML pipeline (Mage) trains a classifier on
+its own curated Iris data, gated by a `test_accuracy` check before anything
+is saved — conceptually the same "test gate before publish" discipline as
+the ELT MERGE, just for a model instead of a table. The RabbitMQ stream
+dispatches live food-order events to drivers via topic routing; the bonus
+consumer listens to that same stream and lands its messages into the *same*
+`gold.fct_orders` table the ELT notebook writes to, reusing its row_hash
+idempotency so batch and streaming data converge on one lakehouse without
+double-counting.
 
 ### Reflection (half page)
 
@@ -409,5 +420,23 @@ certain numpy/pandas objects — so I switched that block to return plain
 
 `stream/consumer_lakehouse.py` collects FreshCart-style messages for 60s,
 lands them, then reuses `freshcart_lib.run_transform()` so they reach
-`gold.fct_orders`. `TODO`: run it twice, paste both gold totals, and confirm
-they didn't double (same row_hash + MERGE idempotency as Part B).
+`gold.fct_orders`. Run for real against the live dispatcher and the same
+Snowflake trial account, processing the same landed batch twice:
+
+```
+[consumer] collecting for 60s ...
+[consumer] collected 52 order(s)
+[consumer] pass 1: bronze rows=98,  gold=[{'N': 86, 'REVENUE': 35186.31}]
+[consumer] pass 2: bronze rows=150, gold=[{'N': 86, 'REVENUE': 35186.31}]
+```
+
+Bronze grew by 52 rows on *each* pass (98 → 150, same append-only behavior as
+Part B), but gold's row count and revenue are byte-for-byte identical across
+both passes — proving the same `row_hash` + `MERGE` idempotency from Part B
+holds when the gold table is fed by a stream instead of a batch notebook.
+
+(One real bug found and fixed while building this: the streamed orders used
+a synthetic `customer_id = "CUST-STREAM"` that had no row in
+`dim.customers_scd2` — the gold `MERGE`'s join silently dropped every
+streamed order with zero error, so the first real run showed gold completely
+unchanged. Fixed by adding a flat-tier SCD2 row for `CUST-STREAM`.)

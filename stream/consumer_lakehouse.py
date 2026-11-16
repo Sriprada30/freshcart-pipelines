@@ -13,6 +13,7 @@ Usage:
 """
 import json
 import os
+import random
 import sys
 import time
 
@@ -50,7 +51,9 @@ def collect_orders_for_one_minute() -> list:
             orders.append({
                 "order_id": msg.get("id"),
                 "customer_id": "CUST-STREAM",
-                "amount": 0.0,
+                # the dispatch stream carries ride/food requests, not order amounts,
+                # so we price each one like a small FreshCart order for this demo
+                "amount": round(random.uniform(100, 900), 2),
                 "currency": "INR",
                 "order_date": time.strftime("%Y-%m-%d"),
                 "updated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
@@ -80,13 +83,21 @@ def main():
 
     conn = fc.get_connection()
     fc.run_ddl(conn)
-    fc.load_file(conn, landing_path, source="web")  # reuse the web schema's load_file path
-    fc.run_transform(conn, include_currency_check=True)
 
-    gold = fc.query_df(conn, f"SELECT COUNT(*) AS n, SUM(amount_inr) AS revenue FROM {fc.DATABASE}.GOLD.FCT_ORDERS")
-    print("[consumer] gold.fct_orders now:", gold.to_dict("records"))
-    print("[consumer] run this script again -- gold totals should NOT double, "
-          "because row_hash + MERGE is idempotent (same Part B mechanism).")
+    # Load + transform this SAME batch twice -- this is the actual idempotency
+    # test: bronze grows both times (append-only, same as Part B), but gold's
+    # row_hash MERGE should leave gold's row count/revenue unchanged the
+    # second time, since nothing about these orders actually changed.
+    for pass_num in (1, 2):
+        fc.load_file(conn, landing_path, source="web")
+        fc.run_transform(conn, include_currency_check=True)
+        bronze_n = fc.query_df(conn, f"SELECT COUNT(*) AS n FROM {fc.DATABASE}.BRONZE.ORDERS_RAW").iloc[0, 0]
+        gold = fc.query_df(conn, f"SELECT COUNT(*) AS n, SUM(amount_inr) AS revenue FROM {fc.DATABASE}.GOLD.FCT_ORDERS")
+        print(f"[consumer] pass {pass_num}: bronze rows={bronze_n}, gold={gold.to_dict('records')}")
+
+    print("[consumer] gold's row count/revenue above should be IDENTICAL across "
+          "pass 1 and pass 2, even though bronze grew both times -- that's the "
+          "same row_hash + MERGE idempotency as Part B.")
 
 
 if __name__ == "__main__":

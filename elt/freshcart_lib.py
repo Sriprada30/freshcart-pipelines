@@ -79,6 +79,10 @@ MOCK_CRM_TIER_EVENTS = [
     ("CUST-03", "Silver", "2026-01-01"),
     ("CUST-04", "Bronze", "2026-01-01"),
     ("CUST-05", "Bronze", "2026-01-01"),
+    # Bonus: streamed orders use this synthetic customer -- without a matching
+    # SCD2 row, the gold MERGE's inner join silently drops them (found by
+    # actually running the bonus consumer and seeing gold NOT grow at all).
+    ("CUST-STREAM", "Bronze", "2020-01-01"),
 ]
 
 
