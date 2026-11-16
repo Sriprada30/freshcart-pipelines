@@ -155,8 +155,8 @@ not how many reasons are in it).
 | Number of gold rows whose published_at changed | 0, if only *changed* rows get touched | **4 (all of them)** — see note below |
 
 **Note on `published_at`:** the real run shows *every* gold row's
-`published_at` advancing on each MERGE (e.g. ORD-1002's went from
-`10:22:23.967` to `10:22:26.344`), not just rows whose business data
+`published_at` advancing on each MERGE (e.g. ORD-1002's got a later
+timestamp on the second run than the first), not just rows whose business data
 changed. That's because this `MERGE`'s `WHEN MATCHED` clause always refreshes
 `published_at` whenever `row_hash` matches — i.e. `published_at` means "last
 time this exact row was reconfirmed by a run," not "last time this row's
