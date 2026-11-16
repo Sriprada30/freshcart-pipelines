@@ -10,17 +10,22 @@ GitHub repo: https://github.com/Sriprada30/freshcart-pipelines
 
 ### A1. Repository (5 marks)
 
-`git log --oneline` (9 commits, spread across the assignment, newest first):
+`git log --oneline` (14 commits, spread across the assignment, newest first):
 ```
-95221b3 fix: revert prepare_data test_size to 0.2 (CI back to green, A3)
-1b7393c test: bump prepare_data test_size to 0.3 to demonstrate a failing CI gate (A3)
-abdeffb feat: execute FreshCart ELT notebook against live Snowflake, fill report with real B1-B5 results
-ec82635 docs: add report template with live D1 routing proof and D2/D3 stream evidence
-6836b9a feat: add RabbitMQ dispatcher, driver (ACK/NACK), and lakehouse bonus consumer
-84cbbc9 feat: add FreshCart ELT pipeline for Snowflake (bronze/silver/dim/gold, SCD2, idempotent merge)
-87b5a13 test: add pytest for prepare_data's 80/20 split (Part A3)
-6e2d403 feat: add Mage iris_classifier pipeline (load, prepare, train gate, evaluate, save)
-eb955e1 chore: scaffold repo structure, CI workflow, and requirements
+740f7de docs: remove visible timestamps from screenshots and report text
+08b4c97 feat: run bonus stream-to-lakehouse for real, fix CUST-STREAM SCD2 join bug, add integration diagram
+730ea87 docs: add real CI/Mage UI screenshots, embed in report, regenerate PDF
+c456c25 docs: add rendered PDF of the final report
+439fa3a docs: finalize report with real CI/D2/D3/C1/C3 evidence, roll no, and reflection
+aa1b4d6 fix: revert prepare_data test_size to 0.2 (CI back to green, A3)
+dca1a54 test: bump prepare_data test_size to 0.3 to demonstrate a failing CI gate (A3)
+2b1078f feat: execute FreshCart ELT notebook against live Snowflake, fill report with real B1-B5 results
+88f4743 docs: add report template with live D1 routing proof and D2/D3 stream evidence
+e2671f3 feat: add RabbitMQ dispatcher, driver (ACK/NACK), and lakehouse bonus consumer
+2871d12 feat: add FreshCart ELT pipeline for Snowflake (bronze/silver/dim/gold, SCD2, idempotent merge)
+8bc7da3 test: add pytest for prepare_data's 80/20 split (Part A3)
+1190f00 feat: add Mage iris_classifier pipeline (load, prepare, train gate, evaluate, save)
+aef0e9e chore: scaffold repo structure, CI workflow, and requirements
 ```
 
 ### A2. Where does each command act? (4 marks)
@@ -50,11 +55,11 @@ Screenshots of all three real GitHub Actions runs below (`report/evidence/screen
 
 ![Red CI run](evidence/screenshots/red_run.png)
 
-- **Red run** (`TEST_SIZE = 0.3`, commit `1b7393c`): https://github.com/Sriprada30/freshcart-pipelines/actions/runs/43928833204 — failed, because `test_split_is_80_20` asserts exactly 120 train / 30 test rows, which only holds for `test_size=0.2` on 150 rows.
+- **Red run** (`TEST_SIZE = 0.3`, commit `dca1a54`): https://github.com/Sriprada30/freshcart-pipelines/actions/runs/43928833204 — failed, because `test_split_is_80_20` asserts exactly 120 train / 30 test rows, which only holds for `test_size=0.2` on 150 rows.
 
 ![Green CI run after revert](evidence/screenshots/green_run_2.png)
 
-- **Green again** (reverted, commit `95221b3`): https://github.com/Sriprada30/freshcart-pipelines/actions/runs/43929049491 — passed.
+- **Green again** (reverted, commit `aa1b4d6`): https://github.com/Sriprada30/freshcart-pipelines/actions/runs/43929049491 — passed.
 
 ---
 
