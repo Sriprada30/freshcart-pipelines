@@ -1,0 +1,41 @@
+blocks:
+- uuid: load_iris
+  type: data_loader
+  upstream_blocks: []
+  downstream_blocks: [check_quality]
+  file_source:
+    path: data_loaders/load_iris.py
+- uuid: check_quality
+  type: transformer
+  upstream_blocks: [load_iris]
+  downstream_blocks: [prepare_data]
+  file_source:
+    path: transformers/check_quality.py
+- uuid: prepare_data
+  type: transformer
+  upstream_blocks: [check_quality]
+  downstream_blocks: [train_model]
+  file_source:
+    path: transformers/prepare_data.py
+- uuid: train_model
+  type: transformer
+  upstream_blocks: [prepare_data]
+  downstream_blocks: [save_results, evaluate_model]
+  file_source:
+    path: transformers/train_model.py
+- uuid: save_results
+  type: data_exporter
+  upstream_blocks: [train_model]
+  downstream_blocks: []
+  file_source:
+    path: data_exporters/save_results.py
+- uuid: evaluate_model
+  type: transformer
+  upstream_blocks: [train_model]
+  downstream_blocks: []
+  file_source:
+    path: transformers/evaluate_model.py
+name: iris_classifier
+type: python
+uuid: iris_classifier
+variables_dir: ./.mage_variables
