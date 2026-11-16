@@ -16,7 +16,7 @@ if "test" not in globals():
             return func
 
 
-TEST_SIZE = 0.3  # change to 0.3 to deliberately trigger a red CI run (see A3)
+TEST_SIZE = 0.2  # change to 0.3 to deliberately trigger a red CI run (see A3)
 
 
 def transform(df: pd.DataFrame, test_size: float = TEST_SIZE, random_state: int = 42) -> pd.DataFrame:
